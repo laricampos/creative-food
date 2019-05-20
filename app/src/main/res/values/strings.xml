@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Foodcraft</string>
+
+    <string name="intro_text">Find the perfect ingredients for\nyour dishes!\nCook healthy and delicious meals!</string>
+    <string name="intro_start">Start</string>
+
+</resources>
