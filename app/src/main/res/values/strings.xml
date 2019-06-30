@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">Foodcraft</string>
 
+    <!--INTRO-->
     <string name="intro_text">Find the perfect ingredients for\nyour dishes!\nCook healthy and delicious meals!</string>
     <string name="intro_start">Start</string>
+
+    <!--HOME-->
+    <string name="home_add_ingredient">Add ingredient</string>
+
+    <!--INGREDIENTS-->
+    <string name="ingredient_name">Ingredient name</string>
+    <string name="ingredient_add_button">Add</string>
 
 </resources>

@@ -4,4 +4,15 @@
     <color name="primaryDark">#843513</color>
     <color name="accent">#f57942</color>
     <color name="white">#FFF</color>
+
+    <!--TAGS-->
+    <color name="green_sushi">#7eb63a</color>
+    <color name="pink_cranberry">#da4e89</color>
+    <color name="yellow_tulip">#ecb135</color>
+    <color name="blue_eastern">#1baeb2</color>
+    <color name="orange_fire">#e48532</color>
+    <color name="red_flame">#db5248</color>
+    <color name="purple_wisteria">#8c6ea9</color>
+    <color name="blue_curious">#1aa1da</color>
+
 </resources>

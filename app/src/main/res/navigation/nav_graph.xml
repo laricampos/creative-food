@@ -6,21 +6,31 @@
             app:startDestination="@id/intro_fragment">
 
     <fragment
-            android:id="@+id/intro_fragment"
-            android:name="com.jellypump.creativefood.ui.screen.intro.IntroFragment"
-            android:label="Intro"
-            tools:layout="@layout/intro_fragment">
+        android:id="@+id/intro_fragment"
+        android:label="Intro"
+        android:name="com.jellypump.creativefood.ui.screen.intro.IntroFragment"
+        tools:layout="@layout/intro_fragment">
 
         <action
-                android:id="@+id/action_home"
-                app:destination="@id/home_fragment"/>
+            android:id="@+id/action_home"
+            app:destination="@id/home_fragment"/>
     </fragment>
 
     <fragment
-            android:id="@+id/home_fragment"
-            android:name="com.jellypump.creativefood.ui.screen.home.HomeFragment"
-            android:label="Home"
-            tools:layout="@layout/home_fragment">
+        android:id="@+id/home_fragment"
+        android:label="Home"
+        android:name="com.jellypump.creativefood.ui.screen.home.HomeFragment"
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_add_ingredient"
+            app:destination="@id/add_ingredient_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_ingredient_fragment"
+        android:label="Add Ingredient"
+        android:name="com.jellypump.creativefood.ui.screen.ingredient.AddIngredientFragment"
+        tools:layout="@layout/ingredient_add_fragment">
     </fragment>
 
 </navigation>
