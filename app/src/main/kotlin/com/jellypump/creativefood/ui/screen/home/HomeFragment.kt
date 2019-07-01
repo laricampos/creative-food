@@ -10,7 +10,7 @@ class HomeFragment : BaseFragment() {
 
     override fun initUi() {
         home_add_ingredient_button.setOnClickListener {
-            navController.navigate(HomeFragmentDirections.actionAddIngredient())
+            navController.navigate(HomeFragmentDirections.actionManageIngredient())
         }
     }
 }

@@ -6,10 +6,14 @@
     <string name="intro_start">Start</string>
 
     <!--HOME-->
-    <string name="home_add_ingredient">Add ingredient</string>
+    <string name="home_manage_ingredients">Manage ingredients</string>
 
     <!--INGREDIENTS-->
     <string name="ingredient_name">Ingredient name</string>
     <string name="ingredient_add_button">Add</string>
+    <string name="ingredient_health_scale">Health Scale</string>
+    <string name="ingredient_taste_scale">Taste Scale</string>
+    <string name="ingredient_tags">Tags</string>
+    <string name="ingredient_new_tag">New tag</string>
 
 </resources>

@@ -21,6 +21,75 @@
         android:layout_width="match_parent"
         app:layout_constraintTop_toBottomOf="@id/ingredient_add_name_title"/>
 
+    <TextView
+        android:id="@+id/ingredient_add_health_scale_title"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/small_spacing"
+        android:text="@string/ingredient_health_scale"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredient_add_name_input"/>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/ingredient_add_health_scale_container"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/small_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredient_add_health_scale_title"
+        app:singleLine="true"
+        app:singleSelection="true"/>
+
+    <TextView
+        android:id="@+id/ingredient_add_taste_scale_title"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/medium_spacing"
+        android:text="@string/ingredient_taste_scale"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredient_add_health_scale_container"/>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/ingredient_add_taste_scale_container"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/small_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredient_add_taste_scale_title"
+        app:singleLine="true"
+        app:singleSelection="true"/>
+
+    <TextView
+        android:id="@+id/ingredient_add_tag_title"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/medium_spacing"
+        android:text="@string/ingredient_tags"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredient_add_taste_scale_container"/>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/ingredient_add_tag_container"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/small_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredient_add_tag_title"
+        app:singleLine="true"
+        app:singleSelection="true"/>
+
+    <TextView
+        android:id="@+id/ingredient_add_tag_add_button"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/ingredient_new_tag"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ingredient_add_tag_container"
+        style="@style/SecondaryButton"/>
+
     <Button
         android:id="@+id/ingredient_add_button"
         android:layout_height="wrap_content"

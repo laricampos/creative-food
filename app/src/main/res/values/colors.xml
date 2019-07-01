@@ -3,7 +3,10 @@
     <color name="primary">#e05e24</color>
     <color name="primaryDark">#843513</color>
     <color name="accent">#f57942</color>
+
     <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="transparent">#00FFFFFF</color>
 
     <!--TAGS-->
     <color name="green_sushi">#7eb63a</color>

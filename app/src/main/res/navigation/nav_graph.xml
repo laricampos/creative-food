@@ -22,12 +22,22 @@
         android:name="com.jellypump.creativefood.ui.screen.home.HomeFragment"
         tools:layout="@layout/home_fragment">
         <action
-            android:id="@+id/action_add_ingredient"
-            app:destination="@id/add_ingredient_fragment"/>
+            android:id="@+id/action_manage_ingredient"
+            app:destination="@id/ingredient_manage_fragment"/>
     </fragment>
 
     <fragment
-        android:id="@+id/add_ingredient_fragment"
+        android:id="@+id/ingredient_manage_fragment"
+        android:label="Manage Ingredients"
+        android:name="com.jellypump.creativefood.ui.screen.ingredient.ManageIngredientsFragment"
+        tools:layout="@layout/ingredient_manage_fragment">
+        <action
+            android:id="@+id/action_add_ingredient"
+            app:destination="@id/ingredient_add_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/ingredient_add_fragment"
         android:label="Add Ingredient"
         android:name="com.jellypump.creativefood.ui.screen.ingredient.AddIngredientFragment"
         tools:layout="@layout/ingredient_add_fragment">
