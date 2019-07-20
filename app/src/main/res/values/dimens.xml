@@ -7,4 +7,11 @@
     <dimen name="small_margin">8dp</dimen>
     <dimen name="medium_margin">16dp</dimen>
     <dimen name="large_margin">24dp</dimen>
+
+    <dimen name="dialog_height">250dp</dimen>
+    <dimen name="dialog_width">300dp</dimen>
+
+    <dimen name="chip_corner_radius">5dp</dimen>
+    <dimen name="chip_side">30dp</dimen>
+
 </resources>

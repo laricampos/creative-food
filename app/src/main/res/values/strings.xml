@@ -16,4 +16,11 @@
     <string name="ingredient_tags">Tags</string>
     <string name="ingredient_new_tag">New tag</string>
 
+    <!--TAGS-->
+    <string name="tag_new_tag">Add new tag</string>
+    <string name="tag_name">Name</string>
+    <string name="tag_color">Color</string>
+    <string name="tag_add">Add</string>
+
+
 </resources>

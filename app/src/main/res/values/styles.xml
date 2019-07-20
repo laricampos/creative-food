@@ -12,6 +12,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!--TEXT-->
+    <style name="Header1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!--BUTTONS-->
     <style name="PrimaryButton">
         <item name="android:textSize">14sp</item>
@@ -34,6 +40,13 @@
         <item name="android:paddingBottom">10dp</item>
         <item name="android:paddingStart">20dp</item>
         <item name="android:paddingEnd">20dp</item>
+    </style>
+
+    <!--OTHER-->
+    <style name="Chip">
+        <item name="chipCornerRadius">@dimen/chip_corner_radius</item>
+        <item name="checkedIconVisible">true</item>
+        <item name="android:checkable">true</item>
     </style>
 
 </resources>

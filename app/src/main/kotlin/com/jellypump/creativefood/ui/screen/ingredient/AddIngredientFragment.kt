@@ -19,13 +19,15 @@ class AddIngredientFragment : BaseFragment() {
         for (i in -TASTE_SCALE_SIZE..TASTE_SCALE_SIZE + 1) {
             ingredient_add_taste_scale_container.addView(createChip(i.toString()))
         }
+        ingredient_add_tag_add_button.setOnClickListener {
+            navController.navigate(AddIngredientFragmentDirections.actionAddTag())
+        }
     }
 
     private fun createChip(chipText: String) = Chip(context).apply {
         text = chipText
-        chipCornerRadius = 5f
+        chipCornerRadius = resources.getDimension(R.dimen.chip_corner_radius)
         isCheckedIconVisible = false
         isCheckable = true
-
     }
 }

@@ -41,6 +41,16 @@
         android:label="Add Ingredient"
         android:name="com.jellypump.creativefood.ui.screen.ingredient.AddIngredientFragment"
         tools:layout="@layout/ingredient_add_fragment">
+        <action
+            android:id="@+id/action_add_tag"
+            app:destination="@id/tag_add_fragment"/>
     </fragment>
+
+    <dialog
+        android:id="@+id/tag_add_fragment"
+        android:label="Add Tag"
+        android:name="com.jellypump.creativefood.ui.screen.tag.AddTagFragment"
+        tools:layout="@layout/tag_add_fragment">
+    </dialog>
 
 </navigation>
