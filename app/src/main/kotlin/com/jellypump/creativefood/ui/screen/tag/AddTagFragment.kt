@@ -6,11 +6,14 @@ import androidx.appcompat.content.res.AppCompatResources.getColorStateList
 import com.google.android.material.chip.Chip
 import com.jellypump.creativefood.R
 import com.jellypump.creativefood.ui.core.BaseDialogFragment
+import com.jellypump.creativefood.ui.viewmodel.TagViewModel
 import kotlinx.android.synthetic.main.tag_add_fragment.*
 
 class AddTagFragment : BaseDialogFragment() {
 
     override val layoutId = R.layout.tag_add_fragment
+
+    private val tagViewModel by lazy { getViewModel(TagViewModel::class) }
 
     private val tagColours = listOf(
         R.color.green_sushi,
