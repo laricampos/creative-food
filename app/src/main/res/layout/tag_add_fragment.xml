@@ -7,8 +7,8 @@
     android:minWidth="@dimen/dialog_width"
     android:orientation="vertical"
     android:paddingBottom="@dimen/large_margin"
-    android:paddingEnd="@dimen/medium_margin"
-    android:paddingStart="@dimen/medium_margin"
+    android:paddingEnd="@dimen/large_margin"
+    android:paddingStart="@dimen/large_margin"
     android:paddingTop="@dimen/large_margin">
 
     <TextView

@@ -1,4 +1,4 @@
-package com.jellypump.creativefood.ui.viewmodel
+package com.jellypump.creativefood.ui.screen.tag
 
 import com.jellypump.creativefood.ui.core.BaseViewModel
 import javax.inject.Inject

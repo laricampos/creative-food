@@ -9,6 +9,7 @@
     <string name="home_manage_ingredients">Manage ingredients</string>
 
     <!--INGREDIENTS-->
+    <string name="ingredient_title">New Ingredient</string>
     <string name="ingredient_name">Ingredient name</string>
     <string name="ingredient_add_button">Add</string>
     <string name="ingredient_health_scale">Health Scale</string>
@@ -17,7 +18,7 @@
     <string name="ingredient_new_tag">New tag</string>
 
     <!--TAGS-->
-    <string name="tag_new_tag">Add new tag</string>
+    <string name="tag_new_tag">New tag</string>
     <string name="tag_name">Name</string>
     <string name="tag_color">Color</string>
     <string name="tag_add">Add</string>
