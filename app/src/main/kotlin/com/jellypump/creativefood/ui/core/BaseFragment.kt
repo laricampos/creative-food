@@ -50,7 +50,12 @@ abstract class BaseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initUi()
+        observeData()
     }
 
     abstract fun initUi()
+
+    open fun observeData() {
+        // to override
+    }
 }

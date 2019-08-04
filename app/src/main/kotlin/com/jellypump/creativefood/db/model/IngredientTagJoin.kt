@@ -7,7 +7,7 @@ const val INGREDIENT_TAG_JOIN_TABLE_NAME = "ingredient_tag_joins"
 
 @Entity(
     tableName = INGREDIENT_TAG_JOIN_TABLE_NAME,
-    primaryKeys = ["name", "name"],
+    primaryKeys = ["ingredientId", "tagId"],
     foreignKeys = [
         ForeignKey(
             entity = Ingredient::class,
