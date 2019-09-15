@@ -13,7 +13,6 @@
       <option name="XML_KEEP_BLANK_LINES" value="1" />
     </XML>
     <codeStyleSettings language="XML">
-      <option name="FORCE_REARRANGE_MODE" value="1" />
       <indentOptions>
         <option name="CONTINUATION_INDENT_SIZE" value="4" />
       </indentOptions>

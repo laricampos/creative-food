@@ -4,8 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.jellypump.creativefood.di.ViewModelFactory
 import com.jellypump.creativefood.di.ViewModelKey
+import com.jellypump.creativefood.ui.screen.ingredient.AddIngredientViewModel
 import com.jellypump.creativefood.ui.screen.ingredient.IngredientViewModel
-import com.jellypump.creativefood.ui.screen.tag.TagViewModel
+import com.jellypump.creativefood.ui.screen.tag.AddTagViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -20,8 +21,13 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(TagViewModel::class)
-    abstract fun bindTagViewModel(viewModel: TagViewModel): ViewModel
+    @ViewModelKey(AddTagViewModel::class)
+    abstract fun bindTagViewModel(viewModel: AddTagViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddIngredientViewModel::class)
+    abstract fun bindAddIngredientViewModel(viewModel: AddIngredientViewModel): ViewModel
 
     @Binds
     internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
