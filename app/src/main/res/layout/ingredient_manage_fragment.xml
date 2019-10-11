@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/home_add_ingredient_button"
+        android:id="@+id/ingredient_manage_add_button"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/home_manage_ingredients"/>
+        android:text="@string/ingredient_add_button"/>
 
-</FrameLayout>
+</LinearLayout>

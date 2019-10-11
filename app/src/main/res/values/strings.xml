@@ -1,7 +1,29 @@
 <resources>
     <string name="app_name">Foodcraft</string>
 
+    <string name="generic_error">Error. Try again later</string>
+
+    <!--INTRO-->
     <string name="intro_text">Find the perfect ingredients for\nyour dishes!\nCook healthy and delicious meals!</string>
     <string name="intro_start">Start</string>
+
+    <!--HOME-->
+    <string name="home_manage_ingredients">Manage ingredients</string>
+
+    <!--INGREDIENTS-->
+    <string name="ingredient_title">New Ingredient</string>
+    <string name="ingredient_name">Name</string>
+    <string name="ingredient_add_button">Add</string>
+    <string name="ingredient_health_scale">Health Scale</string>
+    <string name="ingredient_taste_scale">Taste Scale</string>
+    <string name="ingredient_tags">Tags</string>
+    <string name="ingredient_new_tag">New tag</string>
+
+    <!--TAGS-->
+    <string name="tag_new_tag">New tag</string>
+    <string name="tag_name">Name</string>
+    <string name="tag_color">Color</string>
+    <string name="tag_add">Add</string>
+
 
 </resources>

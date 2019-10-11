@@ -6,21 +6,51 @@
             app:startDestination="@id/intro_fragment">
 
     <fragment
-            android:id="@+id/intro_fragment"
-            android:name="com.jellypump.creativefood.ui.screen.intro.IntroFragment"
-            android:label="Intro"
-            tools:layout="@layout/intro_fragment">
+        android:id="@+id/intro_fragment"
+        android:label="Intro"
+        android:name="com.jellypump.creativefood.ui.screen.intro.IntroFragment"
+        tools:layout="@layout/intro_fragment">
 
         <action
-                android:id="@+id/action_home"
-                app:destination="@id/home_fragment"/>
+            android:id="@+id/action_home"
+            app:destination="@id/home_fragment"/>
     </fragment>
 
     <fragment
-            android:id="@+id/home_fragment"
-            android:name="com.jellypump.creativefood.ui.screen.home.HomeFragment"
-            android:label="Home"
-            tools:layout="@layout/home_fragment">
+        android:id="@+id/home_fragment"
+        android:label="Home"
+        android:name="com.jellypump.creativefood.ui.screen.home.HomeFragment"
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_manage_ingredient"
+            app:destination="@id/ingredient_manage_fragment"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/ingredient_manage_fragment"
+        android:label="Manage Ingredients"
+        android:name="com.jellypump.creativefood.ui.screen.ingredient.ManageIngredientsFragment"
+        tools:layout="@layout/ingredient_manage_fragment">
+        <action
+            android:id="@+id/action_add_ingredient"
+            app:destination="@id/ingredient_add_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/ingredient_add_fragment"
+        android:label="Add Ingredient"
+        android:name="com.jellypump.creativefood.ui.screen.ingredient.AddIngredientFragment"
+        tools:layout="@layout/ingredient_add_fragment">
+        <action
+            android:id="@+id/action_add_tag"
+            app:destination="@id/tag_add_fragment"/>
+    </fragment>
+
+    <dialog
+        android:id="@+id/tag_add_fragment"
+        android:label="Add Tag"
+        android:name="com.jellypump.creativefood.ui.screen.tag.AddTagFragment"
+        tools:layout="@layout/tag_add_fragment">
+    </dialog>
 
 </navigation>
