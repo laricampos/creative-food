@@ -44,6 +44,11 @@
         <item name="android:paddingEnd">20dp</item>
     </style>
 
+    <!--INPUT-->
+    <style name="MainInput">
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <!--OTHER-->
     <style name="Chip">
         <item name="chipCornerRadius">@dimen/chip_corner_radius</item>
