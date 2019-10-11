@@ -18,16 +18,12 @@
         android:text="@string/tag_new_tag"
         style="@style/Header1"/>
 
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginBottom="@dimen/small_spacing"
-        android:text="@string/tag_name"/>
-
     <EditText
         android:id="@+id/tag_name_input"
+        style="@style/MainInput"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:hint="@string/tag_name"
         android:layout_marginBottom="@dimen/large_spacing"/>
 
     <TextView
@@ -41,7 +37,6 @@
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_marginBottom="@dimen/medium_spacing"
-        android:layout_marginTop="@dimen/small_spacing"
         app:singleLine="true"
         app:singleSelection="true"/>
 
@@ -49,6 +44,7 @@
         android:id="@+id/tad_add_button"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:enabled="false"
         android:layout_gravity="center_horizontal"
         android:text="@string/tag_add"/>
 
