@@ -9,14 +9,20 @@ const val INGREDIENT_TABLE_NAME = "ingredients"
 
 @Entity(tableName = INGREDIENT_TABLE_NAME)
 data class Ingredient(
-    @PrimaryKey val name: String,
+    @PrimaryKey(autoGenerate = true) val id: Int,
+    @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "health_score") val healthScore: Int,
     @ColumnInfo(name = "taste_score") val tasteScore: Int
 ) {
+
+    constructor(name: String,
+                healthScore: Int,
+                tasteScore: Int) : this(0, name, healthScore, tasteScore)
+
     @Ignore
     var tags: List<Tag>? = null
         set(value) {
-            if(field == null) {
+            if (field == null) {
                 field = value
             } else {
                 throw UnsupportedOperationException("Field cannot be reassigned")

@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.jellypump.creativefood.R
@@ -36,7 +35,7 @@ abstract class BaseDialogFragment : DialogFragment() {
     }
 
     protected open fun <T : ViewModel> getViewModel(classType: KClass<T>) =
-        ViewModelProviders.of(this, viewModelFactory)[classType.java]
+        ViewModelProvider(this, viewModelFactory)[classType.java]
 
     final override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

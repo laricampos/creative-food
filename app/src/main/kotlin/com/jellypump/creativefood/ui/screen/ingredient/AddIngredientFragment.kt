@@ -2,35 +2,17 @@ package com.jellypump.creativefood.ui.screen.ingredient
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.jellypump.creativefood.R
 import com.jellypump.creativefood.db.model.Tag
-import com.jellypump.creativefood.extensions.runInBackground
-import com.jellypump.creativefood.repo.TagRepo
+import com.jellypump.creativefood.extensions.onTextChanged
 import com.jellypump.creativefood.ui.core.BaseFragment
-import com.jellypump.creativefood.ui.core.BaseViewModel
-import io.reactivex.rxkotlin.addTo
 import kotlinx.android.synthetic.main.ingredient_add_fragment.*
-import javax.inject.Inject
 
 private const val HEALTH_SCALE_SIZE = 5
 private const val TASTE_SCALE_SIZE = 5
-
-class AddIngredientViewModel @Inject constructor(private val tagRepo: TagRepo) : BaseViewModel() {
-
-    private val _tags: MutableLiveData<List<Tag>> = MutableLiveData()
-    val tags: LiveData<List<Tag>> by lazy {
-        tagRepo.allTags
-            .runInBackground()
-            .subscribe { tags ->
-                _tags.value = tags
-            }.addTo(compositeDisposable)
-        _tags
-    }
-}
 
 class AddIngredientFragment : BaseFragment() {
 
@@ -45,13 +27,33 @@ class AddIngredientFragment : BaseFragment() {
         for (i in -TASTE_SCALE_SIZE..TASTE_SCALE_SIZE + 1) {
             ingredient_add_taste_scale_container.addView(createChip(i.toString()))
         }
+
         ingredient_add_tag_add_button.setOnClickListener {
             navController.navigate(AddIngredientFragmentDirections.actionAddTag())
+        }
+
+        ingredient_add_name_input.onTextChanged(viewModel::onNameEntered)
+
+        ingredient_add_health_scale_container.setOnCheckedChangeListener { chipGroup, id ->
+            chipGroup.findViewById<Chip>(id)?.text?.let {
+                viewModel.onHeathIndexSelected(it.toString().toInt())
+            }
+        }
+        ingredient_add_taste_scale_container.setOnCheckedChangeListener { chipGroup, id ->
+            chipGroup.findViewById<Chip>(id)?.text?.let {
+                viewModel.onTasteIndexSelected(it.toString().toInt())
+            }
+        }
+
+        ingredient_add_button.setOnClickListener {
+            viewModel.addIngredient().simpleSubscribe {
+                findNavController().navigateUp()
+            }
         }
     }
 
     override fun observeData() {
-        viewModel.tags.observe(this, Observer {
+        viewModel.allTags.observe(this, Observer {
             addTags(it)
         })
     }
@@ -62,9 +64,23 @@ class AddIngredientFragment : BaseFragment() {
             val tagChip = Chip(requireContext()).apply {
                 text = it.name
                 chipBackgroundColor = ColorStateList.valueOf(it.colour)
+                isCheckable = true
+                setOnCheckedChangeListener { _, _ -> onTagSelected() }
             }
             ingredient_add_tag_container.addView(tagChip)
         }
+    }
+
+    private fun onTagSelected() {
+        val selectedTags = (0..ingredient_add_tag_container.childCount)
+            .map { index ->
+                ingredient_add_tag_container.getChildAt(index)
+            }.filter { view ->
+                (view as? Chip)?.isChecked ?: false
+            }.map {
+                (it as? Chip)?.text.toString()
+            }
+        viewModel.onTagsSelected(selectedTags)
     }
 
     private fun createChip(chipText: String) = Chip(context).apply {
