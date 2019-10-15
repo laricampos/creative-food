@@ -43,7 +43,9 @@ class AddTagViewModel @Inject constructor(
         tagName.onNext(name)
     }
 
-    fun addTag(): Completable = tagRepo.add(Tag(tagName.value, tagColor.value)).runInBackground()
+    fun addTag(): Completable = tagRepo.add(
+        Tag(tagName.value, tagColor.value)
+    ).runInBackground()
 }
 
 class AddTagFragment : BaseDialogFragment() {

@@ -11,12 +11,12 @@ const val INGREDIENT_TAG_JOIN_TABLE_NAME = "ingredient_tag_joins"
     foreignKeys = [
         ForeignKey(
             entity = Ingredient::class,
-            parentColumns = arrayOf("name"),
+            parentColumns = arrayOf("id"),
             childColumns = arrayOf("ingredientId")
         ),
         ForeignKey(
             entity = Tag::class,
-            parentColumns = arrayOf("name"),
+            parentColumns = arrayOf("id"),
             childColumns = arrayOf("tagId")
         )]
 )
