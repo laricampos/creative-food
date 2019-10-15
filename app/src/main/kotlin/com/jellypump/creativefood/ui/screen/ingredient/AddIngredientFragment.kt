@@ -35,14 +35,16 @@ class AddIngredientFragment : BaseFragment() {
         ingredient_add_name_input.onTextChanged(viewModel::onNameEntered)
 
         ingredient_add_health_scale_container.setOnCheckedChangeListener { chipGroup, id ->
-            chipGroup.findViewById<Chip>(id)?.text?.let {
-                viewModel.onHeathIndexSelected(it.toString().toInt())
-            }
+            viewModel.onHeathIndexSelected(
+                chipGroup.findViewById<Chip>(id)?.text?.toString()?.toInt()
+                    ?: NOT_SELECTED
+            )
         }
         ingredient_add_taste_scale_container.setOnCheckedChangeListener { chipGroup, id ->
-            chipGroup.findViewById<Chip>(id)?.text?.let {
-                viewModel.onTasteIndexSelected(it.toString().toInt())
-            }
+            viewModel.onTasteIndexSelected(
+                chipGroup.findViewById<Chip>(id)?.text?.toString()?.toInt()
+                    ?: NOT_SELECTED
+            )
         }
 
         ingredient_add_button.setOnClickListener {
@@ -50,6 +52,10 @@ class AddIngredientFragment : BaseFragment() {
                 findNavController().navigateUp()
             }
         }
+
+        viewModel.isButtonEnabled.observe(this, Observer {
+            ingredient_add_button.isEnabled = it
+        })
     }
 
     override fun observeData() {
