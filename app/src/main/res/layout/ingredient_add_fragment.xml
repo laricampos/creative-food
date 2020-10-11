@@ -13,7 +13,7 @@
         android:text="@string/ingredient_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/Header1"/>
+        style="@style/H1"/>
 
     <EditText
         android:id="@+id/ingredient_add_name_input"

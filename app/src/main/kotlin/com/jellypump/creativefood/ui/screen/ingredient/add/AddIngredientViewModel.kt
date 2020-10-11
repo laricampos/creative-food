@@ -1,4 +1,4 @@
-package com.jellypump.creativefood.ui.screen.ingredient
+package com.jellypump.creativefood.ui.screen.ingredient.add
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams

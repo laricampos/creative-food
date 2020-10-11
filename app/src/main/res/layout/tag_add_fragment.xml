@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_marginBottom="@dimen/medium_spacing"
         android:text="@string/tag_new_tag"
-        style="@style/Header1"/>
+        style="@style/H1"/>
 
     <EditText
         android:id="@+id/tag_name_input"

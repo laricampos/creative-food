@@ -2,8 +2,8 @@ package com.jellypump.creativefood.di.modules
 
 import com.jellypump.creativefood.ui.screen.MainActivity
 import com.jellypump.creativefood.ui.screen.home.HomeFragment
-import com.jellypump.creativefood.ui.screen.ingredient.AddIngredientFragment
-import com.jellypump.creativefood.ui.screen.ingredient.ManageIngredientsFragment
+import com.jellypump.creativefood.ui.screen.ingredient.add.AddIngredientFragment
+import com.jellypump.creativefood.ui.screen.ingredient.manage.ManageIngredientsFragment
 import com.jellypump.creativefood.ui.screen.intro.IntroFragment
 import com.jellypump.creativefood.ui.screen.tag.AddTagFragment
 import dagger.Module
