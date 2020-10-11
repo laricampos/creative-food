@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical">
 
-    <Button
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ingredient_manage_list"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/ingredient_manage_add_button"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="@string/ingredient_add_button"/>
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="@dimen/large_margin"
+        android:layout_marginEnd="@dimen/large_margin" />
 
-</LinearLayout>
+</FrameLayout>

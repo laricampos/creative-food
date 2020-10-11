@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/ingredient_manage_fragment"
         android:label="Manage Ingredients"
-        android:name="com.jellypump.creativefood.ui.screen.ingredient.ManageIngredientsFragment"
+        android:name="com.jellypump.creativefood.ui.screen.ingredient.manage.ManageIngredientsFragment"
         tools:layout="@layout/ingredient_manage_fragment">
         <action
             android:id="@+id/action_add_ingredient"
@@ -39,7 +39,7 @@
     <fragment
         android:id="@+id/ingredient_add_fragment"
         android:label="Add Ingredient"
-        android:name="com.jellypump.creativefood.ui.screen.ingredient.AddIngredientFragment"
+        android:name="com.jellypump.creativefood.ui.screen.ingredient.add.AddIngredientFragment"
         tools:layout="@layout/ingredient_add_fragment">
         <action
             android:id="@+id/action_add_tag"

@@ -35,7 +35,7 @@ class AddTagViewModel @Inject constructor(
                 name.isNotEmpty() && color != 0
             })
 
-    fun onColorSelected(@DrawableRes color: Int) {
+    fun onColorSelected(@ColorRes color: Int) {
         tagColor.onNext(color)
     }
 

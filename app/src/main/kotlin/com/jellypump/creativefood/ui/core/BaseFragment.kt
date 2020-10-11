@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -81,4 +83,8 @@ abstract class BaseFragment : Fragment() {
         },
         onComplete = onComplete
     ).addTo(compositeDisposable)
+
+    fun <T> LiveData<T>.observe(action: (T) -> Unit) {
+        observe(this@BaseFragment, Observer(action))
+    }
 }

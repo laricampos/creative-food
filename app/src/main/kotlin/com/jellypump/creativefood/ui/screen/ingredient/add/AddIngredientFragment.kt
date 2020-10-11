@@ -1,8 +1,7 @@
-package com.jellypump.creativefood.ui.screen.ingredient
+package com.jellypump.creativefood.ui.screen.ingredient.add
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.jellypump.creativefood.R
@@ -53,15 +52,15 @@ class AddIngredientFragment : BaseFragment() {
             }
         }
 
-        viewModel.isButtonEnabled.observe(this, Observer {
+        viewModel.isButtonEnabled.observe {
             ingredient_add_button.isEnabled = it
-        })
+        }
     }
 
     override fun observeData() {
-        viewModel.allTags.observe(this, Observer {
+        viewModel.allTags.observe {
             addTags(it)
-        })
+        }
     }
 
     @SuppressLint("ResourceAsColor")
