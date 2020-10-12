@@ -4,11 +4,11 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.jellypump.creativefood.db.dao.IngredientDao
 import com.jellypump.creativefood.db.dao.TagDao
-import com.jellypump.creativefood.db.model.Ingredient
-import com.jellypump.creativefood.db.model.IngredientTagJoin
-import com.jellypump.creativefood.db.model.Tag
+import com.jellypump.creativefood.db.entity.IngredientEntity
+import com.jellypump.creativefood.db.entity.IngredientTagEntity
+import com.jellypump.creativefood.db.entity.TagEntity
 
-@Database(entities = [Ingredient::class, Tag::class, IngredientTagJoin::class], version = 1)
+@Database(entities = [IngredientEntity::class, TagEntity::class, IngredientTagEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun ingredientDao(): IngredientDao
     abstract fun tagDao(): TagDao

@@ -1,10 +1,10 @@
 package com.jellypump.creativefood.repo
 
 import com.jellypump.creativefood.db.dao.IngredientDao
-import com.jellypump.creativefood.db.model.Ingredient
-import com.jellypump.creativefood.db.model.IngredientTagJoin
+import com.jellypump.creativefood.db.mapper.toEntity
+import com.jellypump.creativefood.db.mapper.toModel
+import com.jellypump.creativefood.model.Ingredient
 import io.reactivex.Completable
-import io.reactivex.Flowable
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,21 +15,18 @@ class IngredientRepo @Inject constructor(
 ) {
 
     val allIngredients: Single<List<Ingredient>>
-        get() = ingredientDao.getAll().flatMapPublisher {
-            Flowable.fromIterable(it)
-        }.flatMap { ingredient ->
-            ingredientDao.getTagsByIngredient(ingredient.id).map { tags ->
-                ingredient.apply {
-                    this.tags = tags
+        get() = ingredientDao.getIngredientsWithTags()
+            .map {
+                it.map { ingredientEntity ->
+                    ingredientEntity.toModel()
                 }
-            }.toFlowable()
-        }.toList()
+            }
 
-    fun addIngredient(ingredient: Ingredient): Completable = ingredientDao.insert(ingredient)
-        .flatMapCompletable { id ->
-            (Flowable.fromIterable(ingredient.tags))
-                .flatMapCompletable { tag ->
-                    ingredientDao.insertIngredientTag(IngredientTagJoin(id.toInt(), tag.id))
-                }
+    fun addIngredient(ingredient: Ingredient): Completable {
+        val ingredientEntity = ingredient.toEntity()
+        val tagEntities = ingredient.tags.map {
+            it.toEntity()
         }
+        return ingredientDao.insertIngredientWithTag(ingredientEntity, tagEntities)
+    }
 }
