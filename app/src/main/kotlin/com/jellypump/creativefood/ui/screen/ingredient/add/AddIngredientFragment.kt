@@ -5,8 +5,8 @@ import android.content.res.ColorStateList
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.chip.Chip
 import com.jellypump.creativefood.R
-import com.jellypump.creativefood.db.model.Tag
 import com.jellypump.creativefood.extensions.onTextChanged
+import com.jellypump.creativefood.model.Tag
 import com.jellypump.creativefood.ui.core.BaseFragment
 import kotlinx.android.synthetic.main.ingredient_add_fragment.*
 
@@ -59,12 +59,13 @@ class AddIngredientFragment : BaseFragment() {
 
     override fun observeData() {
         viewModel.allTags.observe {
-            addTags(it)
+            showTags(it)
         }
     }
 
     @SuppressLint("ResourceAsColor")
-    private fun addTags(tags: List<Tag>) {
+    private fun showTags(tags: List<Tag>) {
+        ingredient_add_tag_container.removeAllViews()
         tags.forEach {
             val tagChip = Chip(requireContext()).apply {
                 text = it.name
@@ -80,9 +81,11 @@ class AddIngredientFragment : BaseFragment() {
         val selectedTags = (0..ingredient_add_tag_container.childCount)
             .map { index ->
                 ingredient_add_tag_container.getChildAt(index)
-            }.filter { view ->
+            }
+            .filter { view ->
                 (view as? Chip)?.isChecked ?: false
-            }.map {
+            }
+            .map {
                 (it as? Chip)?.text.toString()
             }
         viewModel.onTagsSelected(selectedTags)

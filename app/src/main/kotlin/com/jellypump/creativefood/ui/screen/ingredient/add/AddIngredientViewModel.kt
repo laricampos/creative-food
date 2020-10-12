@@ -2,14 +2,14 @@ package com.jellypump.creativefood.ui.screen.ingredient.add
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
-import com.jellypump.creativefood.db.model.Ingredient
-import com.jellypump.creativefood.db.model.Tag
 import com.jellypump.creativefood.extensions.runInBackground
+import com.jellypump.creativefood.model.Ingredient
+import com.jellypump.creativefood.model.Tag
 import com.jellypump.creativefood.repo.IngredientRepo
 import com.jellypump.creativefood.repo.TagRepo
 import com.jellypump.creativefood.ui.core.BaseViewModel
 import io.reactivex.Completable
-import io.reactivex.processors.ReplayProcessor
+import io.reactivex.processors.BehaviorProcessor
 import io.reactivex.rxkotlin.Flowables
 import javax.inject.Inject
 
@@ -19,16 +19,14 @@ class AddIngredientViewModel @Inject constructor(
     private val tagRepo: TagRepo,
     private val ingredientRepo: IngredientRepo) : BaseViewModel() {
 
-    private val selectedTags: ReplayProcessor<List<Tag>> = ReplayProcessor.create()
-    private val healthIndex: ReplayProcessor<Int> = ReplayProcessor.create()
-    private val tasteIndex: ReplayProcessor<Int> = ReplayProcessor.create()
-    private val ingredientName: ReplayProcessor<String> = ReplayProcessor.create()
+    private val selectedTags: BehaviorProcessor<List<Tag>> = BehaviorProcessor.create()
+    private val healthIndex: BehaviorProcessor<Int> = BehaviorProcessor.create()
+    private val tasteIndex: BehaviorProcessor<Int> = BehaviorProcessor.create()
+    private val ingredientName: BehaviorProcessor<String> = BehaviorProcessor.create()
 
     val allTags: LiveData<List<Tag>> by lazy {
         LiveDataReactiveStreams.fromPublisher(
-            tagRepo.allTags
-                .runInBackground()
-                .toFlowable()
+            tagRepo.allTags.runInBackground()
         )
     }
 
@@ -36,7 +34,7 @@ class AddIngredientViewModel @Inject constructor(
         get() = LiveDataReactiveStreams.fromPublisher(
             Flowables.combineLatest(healthIndex, tasteIndex, ingredientName)
                 .map { (healthIndex, tasteIndex, ingredientName) ->
-                    ingredientName.isNotEmpty() && healthIndex != NOT_SELECTED && tasteIndex!= NOT_SELECTED
+                    ingredientName.isNotEmpty() && healthIndex != NOT_SELECTED && tasteIndex != NOT_SELECTED
                 }
         )
 
@@ -62,10 +60,12 @@ class AddIngredientViewModel @Inject constructor(
     }
 
     fun addIngredient(): Completable {
-        val ingredient = Ingredient(ingredientName.value, healthIndex.value, tasteIndex.value)
-            .apply {
-                tags = selectedTags.value
-            }
+        val name = requireNotNull(ingredientName.value)
+        val healthIndex = requireNotNull(healthIndex.value)
+        val tasteIndex = requireNotNull(tasteIndex.value)
+        val selectedTags = selectedTags.value ?: emptyList()
+
+        val ingredient = Ingredient(name, healthIndex, tasteIndex, selectedTags)
         return ingredientRepo.addIngredient(ingredient).runInBackground()
     }
 }

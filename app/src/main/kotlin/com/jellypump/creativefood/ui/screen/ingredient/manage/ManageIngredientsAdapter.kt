@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.jellypump.creativefood.R
-import com.jellypump.creativefood.db.model.Ingredient
-import com.jellypump.creativefood.db.model.Tag
+import com.jellypump.creativefood.db.entity.TagEntity
+import com.jellypump.creativefood.model.Ingredient
+import com.jellypump.creativefood.model.Tag
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.ingredient_list_item.view.*
 
