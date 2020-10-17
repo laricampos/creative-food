@@ -15,7 +15,7 @@ class ManageIngredientsFragment : BaseFragment() {
 
     override fun initUi() {
         ingredient_manage_add_button.setOnClickListener {
-            navController.navigate(ManageIngredientsFragmentDirections.actionAddIngredient())
+            navController.navigate(ManageIngredientsFragmentDirections.actionAddIngredient(null))
         }
 
         initRecyclerView()
@@ -30,7 +30,7 @@ class ManageIngredientsFragment : BaseFragment() {
     }
 
     private fun onIngredientSelected(ingredient: Ingredient) {
-        
+        navController.navigate(ManageIngredientsFragmentDirections.actionAddIngredient(ingredient))
     }
 
     override fun observeData() {
