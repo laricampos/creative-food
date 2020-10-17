@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.jellypump.creativefood.R
-import com.jellypump.creativefood.db.entity.TagEntity
 import com.jellypump.creativefood.model.Ingredient
 import com.jellypump.creativefood.model.Tag
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.ingredient_list_item.view.*
 
-class ManageIngredientsListAdapter : RecyclerView.Adapter<ManageIngredientsListAdapter.IngredientViewHolder>() {
+class ManageIngredientsListAdapter(private val onItemClick: (Ingredient) -> Unit) : RecyclerView.Adapter<ManageIngredientsListAdapter.IngredientViewHolder>() {
 
     var ingredients: List<Ingredient> = emptyList()
         set(value) {
@@ -23,7 +22,8 @@ class ManageIngredientsListAdapter : RecyclerView.Adapter<ManageIngredientsListA
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IngredientViewHolder =
         IngredientViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.ingredient_list_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.ingredient_list_item, parent, false),
+            onItemClick
         )
 
     override fun getItemCount(): Int = ingredients.size
@@ -32,7 +32,8 @@ class ManageIngredientsListAdapter : RecyclerView.Adapter<ManageIngredientsListA
         holder.bind(ingredients[position])
     }
 
-    class IngredientViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer {
+    class IngredientViewHolder(override val containerView: View, private val onItemClick: (Ingredient) -> Unit) : RecyclerView.ViewHolder(containerView),
+                                                                                                                  LayoutContainer {
 
         fun bind(ingredient: Ingredient) {
             containerView.apply {
@@ -40,6 +41,9 @@ class ManageIngredientsListAdapter : RecyclerView.Adapter<ManageIngredientsListA
                 ingredient_taste_score.text = ingredient.tasteScore.toString()
                 ingredient_health_score.text = ingredient.healthScore.toString()
                 addTags(ingredient.tags)
+                setOnClickListener {
+                    onItemClick(ingredient)
+                }
             }
         }
 
