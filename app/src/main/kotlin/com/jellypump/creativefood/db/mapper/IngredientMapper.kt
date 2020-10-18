@@ -6,6 +6,7 @@ import com.jellypump.creativefood.model.Ingredient
 import com.jellypump.creativefood.model.Tag
 
 fun IngredientWithTagsEntity.toModel() = Ingredient(
+    id = ingredient.ingredientId,
     name = ingredient.name,
     healthScore = ingredient.healthScore,
     tasteScore = ingredient.tasteScore,
@@ -19,6 +20,7 @@ fun IngredientWithTagsEntity.toModel() = Ingredient(
 )
 
 fun Ingredient.toEntity() = IngredientEntity(
+    ingredientId = id,
     name = name,
     healthScore = healthScore,
     tasteScore = tasteScore

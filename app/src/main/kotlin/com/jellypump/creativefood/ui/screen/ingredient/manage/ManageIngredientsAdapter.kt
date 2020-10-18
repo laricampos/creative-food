@@ -48,6 +48,7 @@ class ManageIngredientsListAdapter(private val onItemClick: (Ingredient) -> Unit
         }
 
         private fun addTags(tags: List<Tag>?) {
+            containerView.ingredient_tag_container.removeAllViews()
             tags?.forEach {
                 val tagChip = Chip(containerView.context).apply {
                     text = it.name
