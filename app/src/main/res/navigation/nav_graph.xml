@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/nav_graph"
-            app:startDestination="@id/intro_fragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/intro_fragment">
 
     <fragment
         android:id="@+id/intro_fragment"
@@ -13,7 +13,7 @@
 
         <action
             android:id="@+id/action_home"
-            app:destination="@id/home_fragment"/>
+            app:destination="@id/home_fragment" />
     </fragment>
 
     <fragment
@@ -23,7 +23,7 @@
         tools:layout="@layout/home_fragment">
         <action
             android:id="@+id/action_manage_ingredient"
-            app:destination="@id/ingredient_manage_fragment"/>
+            app:destination="@id/ingredient_manage_fragment" />
     </fragment>
 
     <fragment
@@ -33,7 +33,7 @@
         tools:layout="@layout/ingredient_manage_fragment">
         <action
             android:id="@+id/action_add_ingredient"
-            app:destination="@id/ingredient_add_fragment"/>
+            app:destination="@id/ingredient_add_fragment" />
     </fragment>
 
     <fragment
@@ -43,14 +43,18 @@
         tools:layout="@layout/ingredient_add_fragment">
         <action
             android:id="@+id/action_add_tag"
-            app:destination="@id/tag_add_fragment"/>
+            app:destination="@id/tag_add_fragment" />
+
+        <argument
+            android:name="ingredient"
+            app:argType="com.jellypump.creativefood.model.Ingredient"
+            app:nullable="true" />
     </fragment>
 
     <dialog
         android:id="@+id/tag_add_fragment"
         android:label="Add Tag"
         android:name="com.jellypump.creativefood.ui.screen.tag.AddTagFragment"
-        tools:layout="@layout/tag_add_fragment">
-    </dialog>
+        tools:layout="@layout/tag_add_fragment"></dialog>
 
 </navigation>
