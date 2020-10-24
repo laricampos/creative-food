@@ -14,6 +14,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.jellypump.creativefood.R
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.Completable
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy

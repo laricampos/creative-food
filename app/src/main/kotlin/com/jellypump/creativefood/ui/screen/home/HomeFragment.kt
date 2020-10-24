@@ -12,5 +12,9 @@ class HomeFragment : BaseFragment() {
         home_add_ingredient_button.setOnClickListener {
             navController.navigate(HomeFragmentDirections.actionManageIngredient())
         }
+
+        home_generate_recipe_button.setOnClickListener {
+            navController.navigate(HomeFragmentDirections.actionGenerateRecipe())
+        }
     }
 }

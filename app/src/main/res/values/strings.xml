@@ -9,6 +9,16 @@
 
     <!--HOME-->
     <string name="home_manage_ingredients">Manage ingredients</string>
+    <string name="home_recipe_generator">Generate recipe</string>
+
+    <!--RECIPE-->
+    <string name="recipe_generate_title">Generate new recipe</string>
+    <string name="recipe_generate_max_number_ingredients">Max number of ingredients:</string>
+    <string name="recipe_generate_min_number_ingredients">Min number of ingredients:</string>
+    <string name="recipe_generate_minimum_health_score">Minimum health score</string>
+    <string name="recipe_generate_minimum_taste_score">Minimum taste score</string>
+    <string name="recipe_generate_with_tags">With tags</string>
+    <string name="recipe_generate_button_title">Generate</string>
 
     <!--INGREDIENTS-->
     <string name="ingredient_title">New Ingredient</string>
@@ -25,5 +35,9 @@
     <string name="tag_color">Color</string>
     <string name="tag_add">Add</string>
 
+    <!--RECIPE-->
+    <string name="recipe_select_max_num_ingredients_title">Maximum number of ingredients</string>
+    <string name="recipe_select_max_num_ingredients_text">Select a value</string>
+    <string name="recipe_generate_error">Could not generate a recipe with given parameters</string>
 
 </resources>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="@dimen/medium_margin">
+
+    <TextView
+        android:id="@+id/recipe_generate_title"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/recipe_generate_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/H1" />
+
+    <TextView
+        android:id="@+id/recipe_generate_max_number_ingredients"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/small_spacing"
+        android:text="@string/recipe_generate_max_number_ingredients"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipe_generate_title" />
+
+
+    <TextView
+        android:id="@+id/recipe_generate_max_number_ingredients_text"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:paddingEnd="@dimen/small_spacing"
+        android:paddingStart="@dimen/small_spacing"
+        android:text="5"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/recipe_generate_max_number_ingredients"
+        app:layout_constraintTop_toTopOf="@id/recipe_generate_max_number_ingredients" />
+
+    <TextView
+        android:id="@+id/recipe_generate_min_number_ingredients"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/small_spacing"
+        android:text="@string/recipe_generate_min_number_ingredients"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipe_generate_max_number_ingredients" />
+
+
+    <TextView
+        android:id="@+id/recipe_generate_min_number_ingredients_text"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:paddingEnd="@dimen/small_spacing"
+        android:paddingStart="@dimen/small_spacing"
+        android:text="3"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/recipe_generate_min_number_ingredients"
+        app:layout_constraintTop_toTopOf="@id/recipe_generate_min_number_ingredients" />
+
+    <TextView
+        android:id="@+id/recipe_generate_min_health_score"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/small_spacing"
+        android:text="@string/recipe_generate_minimum_health_score"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipe_generate_min_number_ingredients" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/recipe_generate_min_health_score_chip_group"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/small_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipe_generate_min_health_score"
+        app:singleLine="true"
+        app:singleSelection="true" />
+
+    <TextView
+        android:id="@+id/recipe_generate_min_taste_score"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/small_spacing"
+        android:text="@string/recipe_generate_minimum_taste_score"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipe_generate_min_health_score_chip_group" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/recipe_generate_min_taste_score_chip_group"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/small_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipe_generate_min_taste_score"
+        app:singleLine="true"
+        app:singleSelection="true" />
+
+    <TextView
+        android:id="@+id/recipe_generate_tags"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/small_spacing"
+        android:text="@string/recipe_generate_with_tags"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipe_generate_min_taste_score_chip_group" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/recipe_generate_tags_chip_group"
+        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/small_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipe_generate_tags"
+        app:singleLine="true"
+        app:singleSelection="false" />
+
+    <TextView
+        android:id="@+id/recipe_generate_result_text"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/recipe_generate_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recipe_generate_tags_chip_group" />
+
+    <Button
+        android:id="@+id/recipe_generate_button"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/recipe_generate_button_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
