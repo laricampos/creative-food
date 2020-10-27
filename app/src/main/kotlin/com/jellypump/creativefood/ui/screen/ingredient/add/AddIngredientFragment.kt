@@ -3,6 +3,7 @@ package com.jellypump.creativefood.ui.screen.ingredient.add
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.chip.Chip
 import com.jellypump.creativefood.R
 import com.jellypump.creativefood.extensions.onTextChanged
@@ -18,6 +19,8 @@ class AddIngredientFragment : BaseFragment() {
     override val layoutId: Int = R.layout.ingredient_add_fragment
 
     private val viewModel by lazy { getViewModel(AddIngredientViewModel::class) }
+
+    private val args: AddIngredientFragmentArgs by navArgs()
 
     override fun initUi() {
         for (i in -HEALTH_SCALE_SIZE..HEALTH_SCALE_SIZE + 1) {
@@ -55,25 +58,50 @@ class AddIngredientFragment : BaseFragment() {
         viewModel.isButtonEnabled.observe {
             ingredient_add_button.isEnabled = it
         }
+        populateIngredient()
+    }
+
+    private fun populateIngredient() {
+        val ingredient = args.ingredient ?: return
+        viewModel.id = ingredient.id
+
+        ingredient_add_name_input.setText(ingredient.name)
+        val healthChipPosition = ingredient.healthScore + HEALTH_SCALE_SIZE
+        ingredient_add_health_scale_container.apply {
+            val position = getChildAt(healthChipPosition).id
+            check(position)
+        }
+
+        val tasteChipPosition = ingredient.tasteScore + TASTE_SCALE_SIZE
+        ingredient_add_taste_scale_container.apply {
+            val position = getChildAt(tasteChipPosition).id
+            check(position)
+        }
     }
 
     override fun observeData() {
         viewModel.allTags.observe {
-            showTags(it)
+            addTags(it)
         }
     }
 
     @SuppressLint("ResourceAsColor")
-    private fun showTags(tags: List<Tag>) {
+    private fun addTags(tags: List<Tag>) {
+        val selectedTags = args.ingredient?.tags ?: emptyList()
+
         ingredient_add_tag_container.removeAllViews()
-        tags.forEach {
+        tags.forEach { tag ->
             val tagChip = Chip(requireContext()).apply {
-                text = it.name
-                chipBackgroundColor = ColorStateList.valueOf(it.colour)
+                text = tag.name
+                chipBackgroundColor = ColorStateList.valueOf(tag.colour)
                 isCheckable = true
                 setOnCheckedChangeListener { _, _ -> onTagSelected() }
             }
+
             ingredient_add_tag_container.addView(tagChip)
+            if (selectedTags.any { it.id == tag.id }) {
+                tagChip.isChecked = true
+            }
         }
     }
 

@@ -11,6 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:foreground="?android:attr/selectableItemBackground"
         android:padding="@dimen/medium_margin">
 
         <TextView

@@ -38,6 +38,8 @@ class AddIngredientViewModel @Inject constructor(
                 }
         )
 
+    var id: Long = 0
+
     fun onTagsSelected(tagNames: List<String>) {
         val tags = tagNames.mapIndexed { _, tagName ->
             allTags.value?.find { tag ->
@@ -65,7 +67,10 @@ class AddIngredientViewModel @Inject constructor(
         val tasteIndex = requireNotNull(tasteIndex.value)
         val selectedTags = selectedTags.value ?: emptyList()
 
-        val ingredient = Ingredient(name, healthIndex, tasteIndex, selectedTags)
-        return ingredientRepo.addIngredient(ingredient).runInBackground()
+        val ingredient = Ingredient(id, name, healthIndex, tasteIndex, selectedTags)
+
+        val isEditing = id != 0L
+        return if (isEditing) ingredientRepo.editIngredient(ingredient).runInBackground()
+        else ingredientRepo.addIngredient(ingredient).runInBackground()
     }
 }

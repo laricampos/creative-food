@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:padding="@dimen/large_margin">
+    android:padding="@dimen/medium_margin">
 
     <TextView
         android:id="@+id/ingredient_add_title"
@@ -13,15 +12,15 @@
         android:text="@string/ingredient_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/H1"/>
+        style="@style/H1" />
 
     <EditText
         android:id="@+id/ingredient_add_name_input"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/large_margin"
         android:hint="@string/ingredient_name"
-        app:layout_constraintTop_toBottomOf="@id/ingredient_add_title"/>
+        android:layout_marginTop="@dimen/large_margin"
+        app:layout_constraintTop_toBottomOf="@id/ingredient_add_title" />
 
     <TextView
         android:id="@+id/ingredient_add_health_scale_title"
@@ -30,26 +29,27 @@
         android:layout_marginTop="@dimen/small_spacing"
         android:text="@string/ingredient_health_scale"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ingredient_add_name_input"/>
+        app:layout_constraintTop_toBottomOf="@id/ingredient_add_name_input" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/ingredient_add_health_scale_container"
         android:layout_height="wrap_content"
         android:layout_width="0dp"
+        android:layout_marginTop="@dimen/small_spacing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ingredient_add_health_scale_title"
         app:singleLine="true"
-        app:singleSelection="true"/>
+        app:singleSelection="true" />
 
     <TextView
         android:id="@+id/ingredient_add_taste_scale_title"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_marginTop="@dimen/medium_spacing"
+        android:layout_marginTop="@dimen/small_margin"
         android:text="@string/ingredient_taste_scale"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ingredient_add_health_scale_container"/>
+        app:layout_constraintTop_toBottomOf="@id/ingredient_add_health_scale_container" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/ingredient_add_taste_scale_container"
@@ -60,7 +60,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ingredient_add_taste_scale_title"
         app:singleLine="true"
-        app:singleSelection="true"/>
+        app:singleSelection="true" />
 
     <TextView
         android:id="@+id/ingredient_add_tag_title"
@@ -69,7 +69,7 @@
         android:layout_marginTop="@dimen/medium_spacing"
         android:text="@string/ingredient_tags"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ingredient_add_taste_scale_container"/>
+        app:layout_constraintTop_toBottomOf="@id/ingredient_add_taste_scale_container" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/ingredient_add_tag_container"
@@ -80,7 +80,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ingredient_add_tag_title"
         app:singleLine="true"
-        app:singleSelection="false"/>
+        app:singleSelection="false" />
 
     <TextView
         android:id="@+id/ingredient_add_tag_add_button"
@@ -89,16 +89,16 @@
         android:text="@string/ingredient_new_tag"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ingredient_add_tag_container"
-        style="@style/SecondaryButton"/>
+        style="@style/SecondaryButton" />
 
     <Button
         android:id="@+id/ingredient_add_button"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="@string/ingredient_add_button"
         android:enabled="false"
+        android:text="@string/ingredient_add_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

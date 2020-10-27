@@ -24,6 +24,7 @@
         <action
             android:id="@+id/action_manage_ingredient"
             app:destination="@id/ingredient_manage_fragment" />
+
         <action
             android:id="@+id/action_generate_recipe"
             app:destination="@id/generate_recipe_fragment" />
@@ -53,6 +54,11 @@
         <action
             android:id="@+id/action_add_tag"
             app:destination="@id/tag_add_fragment" />
+
+        <argument
+            android:name="ingredient"
+            app:argType="com.jellypump.creativefood.model.Ingredient"
+            app:nullable="true" />
     </fragment>
 
     <dialog
