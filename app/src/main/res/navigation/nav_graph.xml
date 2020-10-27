@@ -24,7 +24,17 @@
         <action
             android:id="@+id/action_manage_ingredient"
             app:destination="@id/ingredient_manage_fragment" />
+
+        <action
+            android:id="@+id/action_generate_recipe"
+            app:destination="@id/generate_recipe_fragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/generate_recipe_fragment"
+        android:label="Generate recipe"
+        android:name="com.jellypump.creativefood.ui.screen.recipe.GenerateRecipeFragment"
+        tools:layout="@layout/recipe_generate_fragment" />
 
     <fragment
         android:id="@+id/ingredient_manage_fragment"

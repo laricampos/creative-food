@@ -16,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.jellypump.creativefood.R
 import dagger.android.support.AndroidSupportInjection
 import io.reactivex.Completable
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
@@ -82,6 +83,14 @@ abstract class BaseFragment : Fragment() {
             Timber.e(it)
         },
         onComplete = onComplete
+    ).addTo(compositeDisposable)
+
+    fun <T : Any> Single<T>.simpleSubscribe(onSuccess: (T) -> Unit) = subscribeBy(
+        onError = {
+            Toast.makeText(requireContext(), R.string.generic_error, Toast.LENGTH_SHORT).show()
+            Timber.e(it)
+        },
+        onSuccess = onSuccess
     ).addTo(compositeDisposable)
 
     fun <T> LiveData<T>.observe(action: (T) -> Unit) {
