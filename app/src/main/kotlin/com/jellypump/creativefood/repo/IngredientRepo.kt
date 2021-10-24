@@ -22,19 +22,12 @@ class IngredientRepo @Inject constructor(
                 }
             }
 
-    fun addIngredient(ingredient: Ingredient): Completable {
+    fun addOrUpdateIngredient(ingredient: Ingredient) = Completable.create { emitter ->
         val ingredientEntity = ingredient.toEntity()
         val tagEntities = ingredient.tags.map {
             it.toEntity()
         }
-        return ingredientDao.insertIngredientWithTag(ingredientEntity, tagEntities)
-    }
-
-    fun editIngredient(ingredient: Ingredient): Completable {
-        val ingredientEntity = ingredient.toEntity()
-        val tagEntities = ingredient.tags.map {
-            it.toEntity()
-        }
-        return ingredientDao.updateIngredientWithTag(ingredientEntity, tagEntities)
+        ingredientDao.upsertIngredientWithTagSync(ingredientEntity, tagEntities)
+        emitter.onComplete()
     }
 }

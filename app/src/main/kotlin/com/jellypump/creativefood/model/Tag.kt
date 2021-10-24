@@ -5,7 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Tag(
-    val id: Long,
     val name: String,
     val colour: Int
 ) : Parcelable

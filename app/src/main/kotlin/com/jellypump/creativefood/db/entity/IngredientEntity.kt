@@ -7,7 +7,8 @@ const val INGREDIENT_WITH_TAGS_TABLE_NAME = "ingredientWithTags"
 
 @Entity(tableName = INGREDIENT_TABLE_NAME)
 data class IngredientEntity(
-    @PrimaryKey(autoGenerate = true) val ingredientId: Long = 0,
+    @PrimaryKey
+    @ColumnInfo(name = "ingredient_name")
     val name: String,
     val healthScore: Int,
     val tasteScore: Int
@@ -17,8 +18,8 @@ data class IngredientEntity(
 data class IngredientWithTagsEntity(
     @Embedded val ingredient: IngredientEntity,
     @Relation(
-        parentColumn = "ingredientId",
-        entityColumn = "tagId",
+        parentColumn = "ingredient_name",
+        entityColumn = "tag_name",
         associateBy = Junction(IngredientTagEntity::class)
     )
     val tags: List<TagEntity>

@@ -7,8 +7,8 @@ const val INGREDIENT_TAG_JOIN_TABLE_NAME = "IngredientTagEntity"
 
 @Entity(
     tableName = INGREDIENT_TAG_JOIN_TABLE_NAME,
-    primaryKeys = ["ingredientId", "tagId"]
+    primaryKeys = ["ingredient_name", "tag_name"]
 )
 class IngredientTagEntity(
-    @ColumnInfo(name = "ingredientId", index = true) val ingredientId: Long,
-    @ColumnInfo(name = "tagId", index = true) val tagId: Long)
+    @ColumnInfo(name = "ingredient_name", index = true) val ingredientName: String,
+    @ColumnInfo(name = "tag_name", index = true) val tagName: String)

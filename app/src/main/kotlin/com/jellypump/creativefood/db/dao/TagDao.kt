@@ -18,6 +18,6 @@ interface TagDao {
     @Query("SELECT * FROM $TAG_TABLE_NAME")
     fun getAll(): Flowable<List<TagEntity>>
 
-    @Query("SELECT * FROM $TAG_TABLE_NAME WHERE name =(:name)")
+    @Query("SELECT * FROM $TAG_TABLE_NAME WHERE tag_name =(:name)")
     fun getByName(name: String): Single<TagEntity>
 }

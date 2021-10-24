@@ -1,5 +1,6 @@
 package com.jellypump.creativefood.db.dao
 
+import android.database.sqlite.SQLiteConstraintException
 import androidx.room.*
 import com.jellypump.creativefood.db.entity.*
 import io.reactivex.Completable
@@ -10,7 +11,7 @@ import timber.log.Timber
 interface IngredientDao {
 
     @Insert
-    fun insertIngredient(ingredient: IngredientEntity): Long
+    fun insertIngredient(ingredient: IngredientEntity)
 
     @Update
     fun updateIngredient(ingredient: IngredientEntity)
@@ -18,15 +19,18 @@ interface IngredientDao {
     @Query("SELECT * FROM $INGREDIENT_TABLE_NAME")
     fun getAll(): Single<List<IngredientEntity>>
 
-    @Query("SELECT * FROM $INGREDIENT_TABLE_NAME WHERE name =(:name)")
+    @Query("SELECT * FROM $INGREDIENT_TABLE_NAME WHERE ingredient_name =(:name)")
     fun getByName(name: String): Single<IngredientEntity>
+
+    @Query("SELECT EXISTS(SELECT * FROM $INGREDIENT_TABLE_NAME WHERE ingredient_name =(:name))")
+    fun isIngredientInserted(name: String): Boolean
 
     @Insert
     fun insertIngredientTag(ingredientTag: IngredientTagEntity)
 
     @Transaction
-    @Query("DELETE FROM $INGREDIENT_TAG_JOIN_TABLE_NAME WHERE ingredientId =(:ingredientTagId)")
-    fun deleteAllIngredientTags(ingredientTagId: Long)
+    @Query("DELETE FROM $INGREDIENT_TAG_JOIN_TABLE_NAME WHERE ingredient_name =(:ingredientName)")
+    fun deleteAllIngredientTags(ingredientName: String)
 
     @Transaction
     @Query("SELECT * FROM $INGREDIENT_TABLE_NAME")
@@ -34,9 +38,9 @@ interface IngredientDao {
 
     @Transaction
     fun insertIngredientWithTagSync(ingredientEntity: IngredientEntity, tags: List<TagEntity>) {
-        val id = insertIngredient(ingredientEntity)
+        insertIngredient(ingredientEntity)
         tags.forEach {
-            val ingredientTag = IngredientTagEntity(id, it.tagId)
+            val ingredientTag = IngredientTagEntity(ingredientEntity.name, it.name)
             insertIngredientTag(ingredientTag)
         }
     }
@@ -44,10 +48,25 @@ interface IngredientDao {
     @Transaction
     fun updateIngredientWithTagSync(ingredientEntity: IngredientEntity, tags: List<TagEntity>) {
         updateIngredient(ingredientEntity)
-        deleteAllIngredientTags(ingredientEntity.ingredientId)
+        deleteAllIngredientTags(ingredientEntity.name)
         tags.forEach {
-            val ingredientTag = IngredientTagEntity(ingredientEntity.ingredientId, it.tagId)
+            val ingredientTag = IngredientTagEntity(ingredientEntity.name, it.name)
             insertIngredientTag(ingredientTag)
+        }
+    }
+
+    @Transaction
+    fun upsertIngredientWithTagSync(ingredientEntity: IngredientEntity, tags: List<TagEntity>) {
+        val isAlreadyInserted = isIngredientInserted(ingredientEntity.name)
+        if (isAlreadyInserted) {
+            updateIngredient(ingredientEntity)
+            deleteAllIngredientTags(ingredientEntity.name)
+        } else {
+            insertIngredient(ingredientEntity)
+            tags.forEach {
+                val ingredientTag = IngredientTagEntity(ingredientEntity.name, it.name)
+                insertIngredientTag(ingredientTag)
+            }
         }
     }
 
