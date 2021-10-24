@@ -63,7 +63,6 @@ class AddIngredientFragment : BaseFragment() {
 
     private fun populateIngredient() {
         val ingredient = args.ingredient ?: return
-        viewModel.id = ingredient.id
 
         ingredient_add_name_input.setText(ingredient.name)
         val healthChipPosition = ingredient.healthScore + HEALTH_SCALE_SIZE
@@ -99,7 +98,7 @@ class AddIngredientFragment : BaseFragment() {
             }
 
             ingredient_add_tag_container.addView(tagChip)
-            if (selectedTags.any { it.id == tag.id }) {
+            if (selectedTags.any { it.name == tag.name }) {
                 tagChip.isChecked = true
             }
         }

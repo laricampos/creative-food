@@ -8,8 +8,8 @@ const val TAG_TABLE_NAME = "tags"
 
 @Entity(tableName = TAG_TABLE_NAME)
 data class TagEntity(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "tagId", index = true) val tagId: Long = 0,
+    @PrimaryKey
+    @ColumnInfo(name = "tag_name")
     val name: String,
     val colour: Int
 )

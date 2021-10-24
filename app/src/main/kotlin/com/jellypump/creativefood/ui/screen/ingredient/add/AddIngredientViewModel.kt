@@ -19,7 +19,7 @@ class AddIngredientViewModel @Inject constructor(
     private val tagRepo: TagRepo,
     private val ingredientRepo: IngredientRepo) : BaseViewModel() {
 
-    private val selectedTags: BehaviorProcessor<List<Tag>> = BehaviorProcessor.create()
+    private val selectedTags: BehaviorProcessor<List<Tag>> = BehaviorProcessor.createDefault(emptyList())
     private val healthIndex: BehaviorProcessor<Int> = BehaviorProcessor.create()
     private val tasteIndex: BehaviorProcessor<Int> = BehaviorProcessor.create()
     private val ingredientName: BehaviorProcessor<String> = BehaviorProcessor.create()
@@ -37,8 +37,6 @@ class AddIngredientViewModel @Inject constructor(
                     ingredientName.isNotEmpty() && healthIndex != NOT_SELECTED && tasteIndex != NOT_SELECTED
                 }
         )
-
-    var id: Long = 0
 
     fun onTagsSelected(tagNames: List<String>) {
         val tags = tagNames.mapIndexed { _, tagName ->
@@ -61,16 +59,12 @@ class AddIngredientViewModel @Inject constructor(
         ingredientName.onNext(name)
     }
 
-    fun addIngredient(): Completable {
-        val name = requireNotNull(ingredientName.value)
-        val healthIndex = requireNotNull(healthIndex.value)
-        val tasteIndex = requireNotNull(tasteIndex.value)
-        val selectedTags = selectedTags.value ?: emptyList()
-
-        val ingredient = Ingredient(id, name, healthIndex, tasteIndex, selectedTags)
-
-        val isEditing = id != 0L
-        return if (isEditing) ingredientRepo.editIngredient(ingredient).runInBackground()
-        else ingredientRepo.addIngredient(ingredient).runInBackground()
-    }
+    fun addIngredient(): Completable = Flowables
+        .combineLatest(ingredientName, healthIndex, tasteIndex, selectedTags) { ingredientName, healthIndex, tasteIndex, selectedTags ->
+            Ingredient(ingredientName, healthIndex, tasteIndex, selectedTags)
+        }
+        .firstOrError()
+        .flatMapCompletable {
+            ingredientRepo.addOrUpdateIngredient(it).runInBackground()
+        }
 }
