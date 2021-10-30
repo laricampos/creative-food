@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Cheese",
+    "health_score": -2,
+    "taste_score": 4,
+    "tags": [
+      "savory",
+      "dairy"
+    ]
+  },
+  {
+    "name": "Apple",
+    "health_score": 3,
+    "taste_score": 3,
+    "tags": [
+      "sweet",
+      "fruit"
+    ]
+  },
+  {
+    "name": "Carrot",
+    "health_score": 4,
+    "taste_score": -1,
+    "tags": [
+      "savory",
+      "sweet",
+      "vegetable"
+    ]
+  }
+]

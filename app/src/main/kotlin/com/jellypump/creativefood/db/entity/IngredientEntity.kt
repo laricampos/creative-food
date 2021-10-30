@@ -14,13 +14,23 @@ data class IngredientEntity(
     val tasteScore: Int
 )
 
+const val INGREDIENT_TAG_JOIN_TABLE_NAME = "IngredientTagCrossRef"
+
+@Entity(
+    tableName = INGREDIENT_TAG_JOIN_TABLE_NAME,
+    primaryKeys = ["ingredient_name", "tag_name"]
+)
+data class IngredientTagCrossRef(
+    @ColumnInfo(name = "ingredient_name", index = true) val ingredientName: String,
+    @ColumnInfo(name = "tag_name", index = true) val tagName: String)
+
 @Entity(tableName = INGREDIENT_WITH_TAGS_TABLE_NAME)
 data class IngredientWithTagsEntity(
     @Embedded val ingredient: IngredientEntity,
     @Relation(
         parentColumn = "ingredient_name",
         entityColumn = "tag_name",
-        associateBy = Junction(IngredientTagEntity::class)
+        associateBy = Junction(IngredientTagCrossRef::class)
     )
     val tags: List<TagEntity>
 )

@@ -1,4 +1,4 @@
-package com.jellypump.creativefood.ui.screen.ingredient
+package com.jellypump.creativefood.ui.screen.ingredient.manage
 
 import androidx.lifecycle.LiveData
 import com.jellypump.creativefood.extensions.runInBackground
@@ -10,7 +10,7 @@ import com.jellypump.creativefood.repo.TagRepo
 import com.jellypump.creativefood.ui.core.BaseViewModel
 import javax.inject.Inject
 
-class IngredientViewModel @Inject constructor(
+class ManageIngredientViewModel @Inject constructor(
     private val ingredientRepo: IngredientRepo,
     private val tagRepo: TagRepo
 ) : BaseViewModel() {
