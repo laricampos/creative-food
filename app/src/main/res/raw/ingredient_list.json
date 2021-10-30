@@ -20,10 +20,236 @@
   {
     "name": "Carrot",
     "health_score": 4,
-    "taste_score": -1,
+    "taste_score": 1,
     "tags": [
       "savory",
       "sweet",
+      "vegetable",
+      "salad"
+    ]
+  },
+  {
+    "name": "Broccoli",
+    "health_score": 4,
+    "taste_score": 3,
+    "tags": [
+      "vegetable"
+    ]
+  },
+  {
+    "name": "Lettuce",
+    "health_score": 2,
+    "taste_score": 1,
+    "tags": [
+      "vegetable",
+      "salad"
+    ]
+  },
+  {
+    "name": "Spinach",
+    "health_score": 3,
+    "taste_score": 2,
+    "tags": [
+      "vegetable",
+      "salad"
+    ]
+  },
+  {
+    "name": "Pea",
+    "health_score": 3,
+    "taste_score": 1,
+    "tags": [
+      "vegetable"
+    ]
+  },
+  {
+    "name": "Cabbage",
+    "health_score": 3,
+    "taste_score": 1,
+    "tags": [
+      "vegetable",
+      "salad"
+    ]
+  },
+  {
+    "name": "Onion",
+    "health_score": 2,
+    "taste_score": 3,
+    "tags": [
+      "vegetable",
+      "salad",
+      "spice"
+    ]
+  },
+  {
+    "name": "Red bell pepper",
+    "health_score": 2,
+    "taste_score": 1,
+    "tags": [
+      "vegetable",
+      "salad"
+    ]
+  },
+  {
+    "name": "Garlic",
+    "health_score": 2,
+    "taste_score": 4,
+    "tags": [
+      "vegetable",
+      "spice"
+    ]
+  },
+  {
+    "name": "Green onion",
+    "health_score": 2,
+    "taste_score": 3,
+    "tags": [
+      "vegetable",
+      "spice",
+      "salad"
+    ]
+  },
+  {
+    "name": "Tomato",
+    "health_score": 3,
+    "taste_score": 2,
+    "tags": [
+      "vegetable",
+      "salad"
+    ]
+  },
+  {
+    "name": "Corn",
+    "health_score": 1,
+    "taste_score": 3,
+    "tags": [
+      "vegetable",
+      "salad"
+    ]
+  },
+  {
+    "name": "Portobello mushroom",
+    "health_score": 3,
+    "taste_score": 5,
+    "tags": [
+      "mushroom",
+      "salad"
+    ]
+  },
+  {
+    "name": "Edamame",
+    "health_score": 3,
+    "taste_score": 2,
+    "tags": [
+      "bean",
+      "vegetable"
+    ]
+  },
+  {
+    "name": "Pumpkin",
+    "health_score": 3,
+    "taste_score": 1,
+    "tags": [
+      "vegetable"
+    ]
+  },
+  {
+    "name": "Cucumber",
+    "health_score": 3,
+    "taste_score": -2,
+    "tags": [
+      "vegetable",
+      "salad"
+    ]
+  },
+  {
+    "name": "Eggplant",
+    "health_score": 3,
+    "taste_score": 1,
+    "tags": [
+      "vegetable"
+    ]
+  },
+  {
+    "name": "Celery",
+    "health_score": 2,
+    "taste_score": 2,
+    "tags": [
+      "vegetable"
+    ]
+  },
+  {
+    "name": "Jalapeno",
+    "health_score": 2,
+    "taste_score": 2,
+    "tags": [
+      "vegetable",
+      "spice",
+      "spicy"
+    ]
+  },
+  {
+    "name": "Zucchini",
+    "health_score": 3,
+    "taste_score": 2,
+    "tags": [
+      "vegetable"
+    ]
+  },
+  {
+    "name": "Olive",
+    "health_score": 1,
+    "taste_score": 3,
+    "tags": [
+      "vegetable"
+    ]
+  },
+  {
+    "name": "Palm hearts",
+    "health_score": 1,
+    "taste_score": 4,
+    "tags": [
+      "vegetable"
+    ]
+  },
+  {
+    "name": "Cauliflower",
+    "health_score": 3,
+    "taste_score": 1,
+    "tags": [
+      "vegetable"
+    ]
+  },
+  {
+    "name": "Basil",
+    "health_score": 2,
+    "taste_score": 4,
+    "tags": [
+      "vegetable",
+      "spice"
+    ]
+  },
+  {
+    "name": "Asparagus",
+    "health_score": 3,
+    "taste_score": 3,
+    "tags": [
+      "vegetable"
+    ]
+  },
+  {
+    "name": "Potato",
+    "health_score": 1,
+    "taste_score": 3,
+    "tags": [
+      "vegetable"
+    ]
+  },
+  {
+    "name": "Sweet potato",
+    "health_score": 2,
+    "taste_score": 2,
+    "tags": [
       "vegetable"
     ]
   }
