@@ -1,6 +1,5 @@
 package com.jellypump.creativefood.db.dao
 
-import android.database.sqlite.SQLiteConstraintException
 import androidx.room.*
 import com.jellypump.creativefood.db.entity.*
 import io.reactivex.Completable
@@ -12,6 +11,12 @@ interface IngredientDao {
 
     @Insert
     fun insertIngredient(ingredient: IngredientEntity)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertIngredients(ingredients: List<IngredientEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertTags(tagList: Set<TagEntity>)
 
     @Update
     fun updateIngredient(ingredient: IngredientEntity)
@@ -26,7 +31,10 @@ interface IngredientDao {
     fun isIngredientInserted(name: String): Boolean
 
     @Insert
-    fun insertIngredientTag(ingredientTag: IngredientTagEntity)
+    fun insertIngredientTagCrossRef(ingredientTagCrossRefs: IngredientTagCrossRef)
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertIngredientTagCrossRefs(ingredientTagCrossRefs: Set<IngredientTagCrossRef>)
 
     @Transaction
     @Query("DELETE FROM $INGREDIENT_TAG_JOIN_TABLE_NAME WHERE ingredient_name =(:ingredientName)")
@@ -40,8 +48,8 @@ interface IngredientDao {
     fun insertIngredientWithTagSync(ingredientEntity: IngredientEntity, tags: List<TagEntity>) {
         insertIngredient(ingredientEntity)
         tags.forEach {
-            val ingredientTag = IngredientTagEntity(ingredientEntity.name, it.name)
-            insertIngredientTag(ingredientTag)
+            val ingredientTag = IngredientTagCrossRef(ingredientEntity.name, it.name)
+            insertIngredientTagCrossRef(ingredientTag)
         }
     }
 
@@ -50,8 +58,8 @@ interface IngredientDao {
         updateIngredient(ingredientEntity)
         deleteAllIngredientTags(ingredientEntity.name)
         tags.forEach {
-            val ingredientTag = IngredientTagEntity(ingredientEntity.name, it.name)
-            insertIngredientTag(ingredientTag)
+            val ingredientTag = IngredientTagCrossRef(ingredientEntity.name, it.name)
+            insertIngredientTagCrossRef(ingredientTag)
         }
     }
 
@@ -64,18 +72,22 @@ interface IngredientDao {
         } else {
             insertIngredient(ingredientEntity)
             tags.forEach {
-                val ingredientTag = IngredientTagEntity(ingredientEntity.name, it.name)
-                insertIngredientTag(ingredientTag)
+                val ingredientTag = IngredientTagCrossRef(ingredientEntity.name, it.name)
+                insertIngredientTagCrossRef(ingredientTag)
             }
         }
     }
 
-    fun insertIngredientWithTag(ingredientEntity: IngredientEntity, tags: List<TagEntity>) =
-        Completable.create {
-            Timber.d("Ingredient inserted: $ingredientEntity/nwith tags: $tags")
-            insertIngredientWithTagSync(ingredientEntity, tags)
-            it.onComplete()
-        }
+    @Transaction
+    fun insertIngredientListWithTagSync(
+        ingredientEntities: List<IngredientEntity>,
+        tagList: Set<TagEntity>,
+        ingredientTagCrossRefs: Set<IngredientTagCrossRef>) {
+
+        insertIngredients(ingredientEntities)
+        insertTags(tagList)
+        insertIngredientTagCrossRefs(ingredientTagCrossRefs)
+    }
 
     fun updateIngredientWithTag(ingredientEntity: IngredientEntity, tags: List<TagEntity>) =
         Completable.create {

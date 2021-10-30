@@ -10,6 +10,7 @@
     <!--HOME-->
     <string name="home_manage_ingredients">Manage ingredients</string>
     <string name="home_recipe_generator">Generate recipe</string>
+    <string name="home_import_ingredients">Import ingredients</string>
 
     <!--RECIPE-->
     <string name="recipe_generate_title">Generate new recipe</string>
